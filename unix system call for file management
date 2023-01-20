@@ -1,0 +1,18 @@
+#include<stdio.h> 
+#include<unistd.h> 
+int main() 
+{ 
+	pid_t child; 
+	child=fork(); 
+	if(child>0) 
+	{ 
+		sleep(3); //sleep 3 seconds 
+		printf("Im child my pid= %d\n",getpid()); 
+		exit(0); 
+	} 
+	else 
+    { 
+    	printf("Hi parent my pid= %d\n",getpid()); 
+    	wait(); // parent will wait for its child to complete 
+    } 
+} 
